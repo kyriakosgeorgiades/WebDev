@@ -1,0 +1,35 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Create an Account</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="register.css" type="text/css" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	</head>
+	<body>
+		<header class = "v-header container">
+			<section class = "fullscreen-video-wrap">
+				<video src = "images/sign.mov" autoplay="true" loop="true"></video>
+			</section>
+			<section class="header-overlay"></section>
+		</header>
+		<section class = "signup-form">
+		<form action="/register" enctype="multipart/form-data" method="post">
+			<h1>Create an Account</h1>
+			<i class="fas fa-user-tie"></i>
+			<input type="text" name="user" placeholder="Set Username" value="" class = "txtb" required>
+			<i class="fas fa-lock"></i>
+            <input type="password" name="pass" placeholder="Set Password" value="" class = "txtb" required>
+			<i class="fas fa-id-card"></i>
+			<p>Profile Picture:<br /><input type="file" name="avatar"></p>
+			<p><input type="submit" value="Create" class = "signup-btn"></p>
+			<a href = "/login">Already Register?</a>
+		</form>
+		</section>
+	</body>
+</html>

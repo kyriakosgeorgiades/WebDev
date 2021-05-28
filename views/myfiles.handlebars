@@ -1,0 +1,178 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Share Drive</title>
+		<link href = "/myfiles.css" type = "text/css" rel = "stylesheet"/>
+		<link href="https://fonts.googleapis.com/css?family=Public+Sans&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/b99047f185.js" crossorigin="anonymous"></script>
+		
+
+	</head>
+	<body>
+		<header>
+			<a href='/'><img id='logo' src='/images/logo.png'  alt='Share Drive logo' /></a>
+			
+			<section>
+				<form class="search" action="" method="get">
+					<input class="search-txt" type="text" name="q" value="{{query}}" placeholder="Search Files"/>
+					<input class="search-btn" type="image" src='/images/loupe.png' border='0' alt='Submit' value="Search">
+				</form>
+				
+			{{!-- TODO: button that clears search --}}
+			</section>
+		
+			
+			
+
+			<nav id='nav1'>					
+					<a href=""><img class='avatar'src='/images/user.png'/></a>
+					<ul>
+						<li id='nav1Top'><a href="/account"><img class='navImg'src="/images/profile.png"><span>Profile</span></a></li>
+						<li><a href="/logout"><img class='navImg' src="/images/signout.png"><span>Sign out</span></a></li>
+					</ul>
+			</nav>
+
+		</header>
+		
+
+		<nav id='nav2'>
+			<ul>
+				<li ><a class='active' href="/myfiles">My Files</a></li>
+			</ul>
+		</nav>
+
+		<section id='fileTree'>
+			<section id="treeHeader">
+				<h1>My Files</h1>
+				
+				<script>
+					function onSubmit() {
+						document.getElementById('confirmButton').style.display = "initial";
+					}
+
+					function fadeout() {
+						document.getElementById('msg').style.opacity = "0";
+						document.getElementById('msg').style.transition = "1s";
+						}
+				</script>
+
+				<form id='uploadForm' action="/myfiles" enctype="multipart/form-data" method="post">
+					<input type="file" name="_file" id='upload' class='inputUpload' onchange="onSubmit()" required>
+					<label for="upload">
+						<img src='/images/plus.png'>
+						<p id='uploaded'>Upload your file</p>
+						{{!-- <img src='images/plus.png'>
+						<p id='uploaded'>Add your file</p> --}}
+					</label>
+					<script>
+						var input = document.getElementById('upload');
+						var infoArea = document.getElementById('uploaded');
+
+						input.addEventListener('change', showFileName);
+
+						function showFileName(event) {
+
+							// the change event gives us the input it occurred in 
+							var input = event.srcElement;
+
+							// the input has an array of files in the `files` property, each one has a name that you can use. We're just using the name here.
+							var fileName = input.files[0].name;
+
+							// use fileName however fits your app best, i.e. add it into a div
+							infoArea.textContent = fileName;
+						}
+
+						
+					</script>
+					
+					{{!-- <input type="submit" value="Confirm" > --}}
+					<button type="submit" class='bigButton' id='confirmButton' onclick="fadeout()">Confirm</button>
+
+				</form>	
+
+					{{#if msg}}
+					<p id="msg">{{msg.msg}}</p>
+					{{/if}}
+
+				{{!-- <span id='twoButtons'> 
+					<button type="button" class='button' ><img class='smlImg' src='images/gridFull.png' /></button>
+					<button type="button" class='button'><img class='smlImg' src='images/sort.png' /></button>
+				</span> --}}
+				
+
+			</section>
+			
+			{{!-- TODO: images for files --}}
+			<table id='tree'>
+				<tr id='headRow'>
+					<th class='icon'></th>
+					<th class='name'>Name</th>
+					<th class='uploaded'>Uploaded</th>
+					<th class='expires'>Expires</th>
+					<th class='size'>Size</th>
+					<th class='type'>Type</th>
+					<th class='delete'></th>
+					<th class='share'></th>
+				</tr>
+				{{#each file}}
+				<tr>
+					<td class='icon'>
+					<button type="button" class='button' >
+						<img class='smlImg' id="{{this.FileName}}" src='/images/file.jpg' onload="displayicon('{{this.FileType}}', '{{this.FileName}}')"/>
+					</button>	
+					</td>
+					<td class='name'>{{this.FileName}}</td>
+					<td class='uploaded'>{{this.Date}}</td>
+					<td class='expires'>{{this.ExpDate}}</td>
+					<td class='size'>{{this.Size}}KB</td>
+					<td class='type' id="filetype">{{this.FileType}}</td>
+					<td class='delete'>
+						<a href='/myfiles/?name={{this.FileName}}&del=true'>
+							<button type="button" class='button' >
+								<img class='smlImg' src='/images/bin.png' alt='delete'>
+							</button>
+						</a>
+					</td>
+					<td class='share'>
+						<a href='/transfer/?name={{this.FileName}}&ex={{this.FileType}}'>
+							<button type="button" class='button'>
+								<img class='smlImg' src='/images/share.png' alt='share' >
+							</button>
+						
+						</a>
+					</td>
+				</tr>
+				{{/each}}
+			</table>
+		</section>
+		
+		<script>
+			function displayicon(fileType, fileName)
+			{
+				switch(fileType)
+				{	
+					case "docx": 
+						document.getElementById(fileName).src = '/images/word.svg'
+						break;
+					case "xlsx": 
+						document.getElementById(fileName).src = '/images/excel.png'
+						break;
+					case "pdf": 
+						document.getElementById(fileName).src = '/images/pdf.png'
+						break;
+					case "pptx": 
+						document.getElementById(fileName).src = '/images/powerpoint.png'
+						break;
+					default: 
+						document.getElementById(fileName).src = '/images/file.jpg'
+						break;
+				}
+				var filetype=document.getElementById("filetype").innerHTML;
+			}
+		</script>				
+	</body>
+	
+</html>

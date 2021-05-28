@@ -1,0 +1,82 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: relative;
+    border-bottom: 10px solid #11B8FF;
+    margin-bottom: 5px;
+    padding: 13px 0;
+ }
+ 
+ h1 {
+
+    text-align: center;
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+    padding: 13px 0;
+  }
+
+p {
+    /*float: left;*/
+    text-align: center;
+    font-size: 20px;
+}
+
+#contacttxt{
+    text-align:left;
+    align-content: center;
+    margin:10px 0;
+    background: rgba(red, green, blue, alpha);
+    border-radius: 2px;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 15px;
+    font-weight: bold;
+    width: 25%
+}
+
+
+.wrapper{
+    width:1170px;
+    margin: auto;
+}
+
+#logo {
+    position: absolute;
+    margin-top: 0px;
+    width: 200px;
+    height: auto;
+  
+}  
+
+.nav-bar{
+    float:right;
+    list-style:none;
+    margin-top: 30px;
+}
+
+.nav-bar li{
+    display: inline-block;
+    
+}
+
+.nav-bar li a{
+    color:#11B8FF;
+    text-decoration: none;
+    padding: 5px 20px;
+    font-family:'Roboto', sans-serif;
+    font-size: 25px;
+    transition: 0.8s;
+    
+}
+
+
+
+.nav-bar li a:hover{
+    background:#11B8FF;
+    color:#333;
+
+}

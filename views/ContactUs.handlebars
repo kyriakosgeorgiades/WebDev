@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Contact Us | Safe Share</title>
+		<meta name="description" content="a contact form for queries">
+		<meta name="author" content="Mark Tyers">
+		<link rel = "stylesheet" href="ContactAbout.css" type = "text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Supermercado+One&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    </head>
+
+    <body>
+        
+        <header>
+            
+            <a href='/'><img id='logo' src='images/logo.png'  alt='Share Drive logo' /></a>
+
+            <h1> Contact Safe Share </h1>
+            
+            <section>
+            <ul class = "nav-bar">
+                <li> <a href="/"> Home</a></li>
+                <li> <a href="/myfiles"> Files</a></li>
+                <li> <a href="/about">About Us</a></li>
+                <li> <a href="/logout">Logout</a></li>
+                <li><a href="/account">Account</a></li>
+            </ul>
+            </section>
+        </header>
+
+   
+
+            <form action="/ContactUs" enctype="multipart/form-data" method="post">
+
+                <p> <label for="fullName">Full Name*</label> </p>
+                <p><input type="text" name="fullName" placeholder="Insert Full Name" value="" id = "contacttxt" required> </p>
+                
+                <p> <label for="email2">Email* </label> </p>
+                <p> <input type="email2" name="email2" placeholder="Insert Email Address" value="" id = "contacttxt" required></p>
+                
+                <p> <label for="phone">Phone </label> </p>
+                <p> <input type="text" name="phone" placeholder="Insert a Contact Number" value="" id = "contacttxt"></p>
+                
+                <p> <label for="message">Message* </label></p>
+                <p> <input type="text" name="userMessage" placeholder="Type your message here..." value="" id="contacttxt" required></p>
+                <p><input type="submit" value="Submit" class = "Submit-btn"></p>
+                
+            </form>
+
+
+    </body>
+
+</html>

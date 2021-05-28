@@ -1,0 +1,35 @@
+
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Log In</title>
+		<meta name="description" content="form to add new books">
+		<meta name="author" content="Mark Tyers">
+		<link href="login.css" type="text/css" rel="stylesheet" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	</head>
+	<body>
+	<div class = "log">
+		<h1>Log In</h1>
+		{{#if msg}}
+ 			<p class="msg">{{msg}}</p>
+		{{/if}}
+		<form action="/login" method="post">
+		<div class ="textboxs">
+			<i class="fas fa-user-tie"></i>
+			<input  type="text" name="user" placeholder="Username" value="{{user}}" autofocus>
+			</div>
+		<div class ="textboxs">	
+			<i class="fas fa-key"></i>
+			<input  type="password" name="pass" placeholder="Password" value="">
+			</div>
+			<p><input class = "button btn" type="submit" value="Log in"></p>
+		</form>
+		<p>New User?</p>
+		<p><i class="fas fa-cloud"></i> <a class = "hyperlinks"  href="register">Register</a></p>
+		<p><i class="fas fa-cloud"></i> <a class = "hyperlinks"  href="registeremail">Register with email</a></p>
+	</div>
+	</body>
+</html>

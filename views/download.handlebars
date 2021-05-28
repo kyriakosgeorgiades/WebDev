@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Share Drive</title>
+    <link href="/myfiles.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Public+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b99047f185.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+    <body>
+        <header>
+            <a href='/'><img id='logo' src='/images/logo.png' alt='Share Drive logo' /></a>
+        </header>
+        
+        <nav id='nav2'>
+            <ul>
+                <li><a href="/myfiles">My Files</a></li>
+                <li><a href="/account">Account</a></li>
+            </ul>
+        </nav>
+        
+        <section id='fileTree'>
+            <h1>Download your file</h1>
+        
+            {{#if link}}
+                <a href='{{link}}'><p id='filename'>{{file.fileName}}</p></a>
+                <form action='/download' id='form-id' method="post">
+                    <input type='hidden' name='downloaded' value='true'>
+                    <input type='hidden' name='fileHash' value='{{file.fileHash}}'>
+                    <a href='{{link}}' onclick="document.getElementById('form-id').submit();" class='bigButton' id='downloadButton' download="{{file.fileName}}">Download</a>
+                </form>
+            {{else}}
+                <p>Something went wrong. Sorry!</p>
+            {{/if}}
+        
+        </section>
+    </body>
+
+</html>

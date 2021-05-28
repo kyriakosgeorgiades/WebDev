@@ -1,0 +1,81 @@
+{{!-- Sources:
+- https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+- https://codepen.io/hidde/pen/LyLmrG
+ --}}
+
+<!doctype html>
+<html lang="en">
+
+
+    <head>
+        <meta charset="utf-8">
+        <title>Share Drive</title>
+        <link href="/myfiles.css" type="text/css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Public+Sans&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/b99047f185.js" crossorigin="anonymous"></script>
+        
+    </head>
+
+    <body>
+        <header>
+            <a href='/'><img id='logo' src='/images/logo.png' alt='Share Drive logo' /></a>
+
+            <nav id='nav1'>
+                <a href=""><img class='avatar' src='/images/user.png' /></a>
+                <ul>
+                    <li id='nav1Top'><a href="#"><img class='navImg' src="/images/profile.png"><span>Profile</span></a></li>
+                    <li><a href="/logout"><img class='navImg' src="/images/signout.png"><span>Sign out</span></a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+
+        <nav id='nav2'>
+            <ul>
+                <li><a href="/myfiles">My Files</a></li>
+                <li><a href="/account">Account</a></li>
+            </ul>
+        </nav>
+
+        <section id='fileTree'>
+            <h1>Transfer</h1>
+
+            <script>
+                function dissappear() {
+                    document.getElementById('fileBox').style.display = 'none';
+                }
+            </script>
+
+            <form action="/transfer" enctype="multipart/form-data" method="post">
+                <section class='inputInfo'>
+                    <section id='fileBox'>
+                        <p>File name:</p>
+                        <p id='visibleFile'>{{cleanFileName}}.{{fileType}}</p>
+                        <input type='hidden' name='fileName' placeholder='s' value='{{cleanFileName}}'>
+                    </section>
+                    <p>Recipient:<br><input type='email' name="targetMail" placeholder="E-mail" required></p>
+                </section>
+
+                <section class='inputInfo'>
+                    <p>Message:<br>
+                    {{!-- <input type='text' name="mailText" placeholder="Message"></p> --}}
+                    <textarea name="message" placeholder='Message'></textarea>
+                </section>
+                <section class='inputInfo'>
+                    {{!-- TODO: it dissapears on wrong inputs too --}}
+                    <input type="submit" value="Transfer" id='transferButton' class='bigButton' onclick="dissappear()">
+                </section>
+            </form>
+            
+            {{#if msg}}
+            <p id='transfered'>{{msg}}</p>
+            {{/if}}               
+        
+        </section>
+
+            
+
+    </body>
+
+</html>
